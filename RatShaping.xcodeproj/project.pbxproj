@@ -21,6 +21,7 @@
 		902739A3155C845F0015C794 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 902739A1155C845F0015C794 /* InfoPlist.strings */; };
 		902739A6155C845F0015C794 /* RatShapingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 902739A5155C845F0015C794 /* RatShapingTests.m */; };
 		903CBB4215D1718B00D5C6B8 /* 8.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 903CBB4115D1718B00D5C6B8 /* 8.bmp */; };
+		90D609EE15D9E65200FB0316 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 90D609ED15D9E65200FB0316 /* Settings.bundle */; };
 		90E0C61C159BC74F00B485CD /* 1.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 90E0C618159BC74F00B485CD /* 1.bmp */; };
 		90E0C61D159BC74F00B485CD /* 2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 90E0C619159BC74F00B485CD /* 2.bmp */; };
 		90E0C61E159BC74F00B485CD /* 3.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 90E0C61A159BC74F00B485CD /* 3.bmp */; };
@@ -58,6 +59,7 @@
 		902739A4155C845F0015C794 /* RatShapingTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatShapingTests.h; sourceTree = "<group>"; };
 		902739A5155C845F0015C794 /* RatShapingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatShapingTests.m; sourceTree = "<group>"; };
 		903CBB4115D1718B00D5C6B8 /* 8.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = 8.bmp; sourceTree = "<group>"; };
+		90D609ED15D9E65200FB0316 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		90E0C616159BC59C00B485CD /* RatShaping.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RatShaping.entitlements; sourceTree = "<group>"; };
 		90E0C618159BC74F00B485CD /* 1.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = 1.bmp; sourceTree = "<group>"; };
 		90E0C619159BC74F00B485CD /* 2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = 2.bmp; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		9027396B155C845F0015C794 = {
 			isa = PBXGroup;
 			children = (
+				90D609ED15D9E65200FB0316 /* Settings.bundle */,
 				90273980155C845F0015C794 /* RatShaping */,
 				9027399E155C845F0015C794 /* RatShapingTests */,
 				90273979155C845F0015C794 /* Frameworks */,
@@ -246,6 +249,7 @@
 				90E0C61E159BC74F00B485CD /* 3.bmp in Resources */,
 				90E0C61F159BC74F00B485CD /* 4.bmp in Resources */,
 				903CBB4215D1718B00D5C6B8 /* 8.bmp in Resources */,
+				90D609EE15D9E65200FB0316 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

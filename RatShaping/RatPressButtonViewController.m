@@ -7,7 +7,6 @@
 //
 
 #import "RatPressButtonViewController.h"
-#define IP_ADDRESS @"138.237.133.117"
 #define TCP_PORT 12345
 
 
@@ -32,9 +31,10 @@
 }  
 
 -(void) openConnection{
+    IP_Address = [[NSUserDefaults standardUserDefaults] stringForKey:@"server_address"];
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
-    CFStreamCreatePairWithSocketToHost (NULL, (CFStringRef) IP_ADDRESS, TCP_PORT, &readStream, &writeStream);
+    CFStreamCreatePairWithSocketToHost (NULL, (__bridge CFStringRef) IP_Address, TCP_PORT, &readStream, &writeStream);
     inputStream = (__bridge NSInputStream *)readStream;
     outputStream = (__bridge NSOutputStream *)writeStream;
     [inputStream setDelegate:self];
@@ -43,7 +43,7 @@
     [outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [inputStream open];
     [outputStream open];
-    NSLog(@"Connection opened");
+    NSLog(@"Connection opened. Host IP Address %@", IP_Address);
 }
 
 

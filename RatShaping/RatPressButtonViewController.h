@@ -20,6 +20,7 @@
     int shapeImage;
     CGPoint midpoint;
     UIImage *stimulus;
+    NSString *IP_Address;
 }
 
 -(IBAction) onPressButton: (id) sender;
