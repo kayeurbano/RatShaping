@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RatPressButtonViewController : UIViewController
+
+
+@interface RatPressButtonViewController : UIViewController<NSStreamDelegate>{
+    NSInputStream *inputStream;
+    NSOutputStream *outputStream;
+    BOOL isConnected;
+    NSArray* vbInstructions;
+    BOOL shapeVisible;
+    int shapePosition;
+    int shapeImage;
+    CGPoint midpoint;
+    UIImage *stimulus;
+}
+
+-(IBAction) onPressButton: (id) sender;
+- (void) messageReceived: (NSString *)message;
 
 @end
