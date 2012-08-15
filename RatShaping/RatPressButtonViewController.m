@@ -60,30 +60,122 @@
 
 - (void) messageReceived: (NSString *)message{
     vbInstructions = [message componentsSeparatedByString:@","];
-    shapeVisible = [[vbInstructions objectAtIndex:0] boolValue];
-    shapePosition = [[vbInstructions objectAtIndex:1] intValue]; 
-    shapeImage = [[vbInstructions objectAtIndex:2] intValue]; 
+//    shapeVisible = [[vbInstructions objectAtIndex:0] boolValue];
+//    shapePosition = [[vbInstructions objectAtIndex:1] intValue]; 
+    Image1 = [[vbInstructions objectAtIndex:0] intValue]; 
+    Image2 = [[vbInstructions objectAtIndex:1] intValue]; 
+    Image3 = [[vbInstructions objectAtIndex:2] intValue]; 
+    Image4 = [[vbInstructions objectAtIndex:3] intValue]; 
+    Image5 = [[vbInstructions objectAtIndex:4] intValue]; 
+    Image6 = [[vbInstructions objectAtIndex:5] intValue]; 
     NSLog(@"Message separated");
-    [self xyPosition];
-    [self shape];
-    CGFloat xpos = midpoint.x;
-    CGFloat ypos = midpoint.y;
-    UIButton *targetButton = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-    targetButton.frame = CGRectMake(xpos, ypos, 300, 300);
-    [targetButton setBackgroundImage:stimulus forState:(UIControlStateNormal)];
-    if (shapeVisible == YES) {
-        [self.view addSubview:targetButton];
-        [targetButton addTarget:self action:@selector(onPressButton:) forControlEvents:UIControlEventTouchUpInside];
-    }    
-    
-    else {
-        CGFloat height = self.view.bounds.size.height;
-        CGFloat width = self.view.bounds.size.width;
-        UIView * ITI = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
-        [self.view addSubview:ITI];
-        ITI.backgroundColor = [UIColor blackColor];
-    }
+    NSLog(@"Image1 = %i", Image1);
+    NSLog(@"Image2 = %i", Image2);
+    NSLog(@"Image3 = %i", Image3);
+    [self SquareOne:Image1];
+    [self SquareTwo:Image2];
+    [self SquareThree:Image3];
+    [self SquareFour:Image4];
+    [self SquareFive:Image5];
+    [self SquareSix:Image6];    
 }
+    
+- (void) SquareOne: (int) shapevalue{
+    UIButton *View1 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+    View1.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, 300, 300);
+    View1.tag = 1;
+    if (shapevalue != 0)
+    {
+        [View1 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+        
+    }
+    else {
+        [View1 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateNormal)];
+    }
+    [self.view addSubview:View1];
+    NSLog(@"Image 1 picture: %@", View1.currentBackgroundImage);
+    [View1 addTarget:self action:@selector(onPressButton: ) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) SquareTwo: (int) shapevalue{
+    UIButton *View2 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+    View2.frame = CGRectMake(self.view.bounds.size.height/2 - 25, self.view.bounds.origin.y, 300, 300);
+    View2.tag = 2;
+    if (shapevalue != 0)
+    {
+        [View2 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+        
+    }
+    else {
+        [View2 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateNormal)];
+    }
+    [self.view addSubview:View2];
+    NSLog(@"Image 2 picture: %@", View2.currentBackgroundImage);
+    [View2 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) SquareThree: (int) shapevalue{
+    UIButton *View3 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+    View3.frame = CGRectMake(self.view.bounds.size.height - 40, self.view.bounds.origin.y, 300, 300);
+    View3.tag = 3;
+    if (shapevalue != 0)
+    {
+        [View3 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+    }
+    else {
+        [View3 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateNormal)];
+    }
+    [self.view addSubview:View3];
+    NSLog(@"Image 3 picture: %@", View3.currentBackgroundImage);
+    [View3 addTarget:self action:@selector(onPressButton:)  forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) SquareFour: (int) shapevalue{
+    UIButton *View4 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+    View4.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.width/2 - 50, 300, 300);
+    View4.tag = 4;
+    if (shapevalue != 0)
+    {
+        [View4 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+    }
+    else {
+        [View4 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateNormal)];
+    }
+    [self.view addSubview:View4];
+    [View4 addTarget:self action:@selector(onPressButton:)  forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) SquareFive: (int) shapevalue{
+    UIButton *View5 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+    View5.frame = CGRectMake(self.view.bounds.size.height/2-25, self.view.bounds.size.width/2 - 50, 300, 300);
+    View5.tag = 5;
+    if (shapevalue != 0)
+    {
+        [View5 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+    }
+    else {
+        [View5 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateNormal)];
+    }
+    [self.view addSubview:View5];
+    [View5 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) SquareSix: (int) shapevalue{
+    UIButton *View6 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
+    View6.frame = CGRectMake(self.view.bounds.size.height-40, self.view.bounds.size.width/2 - 50, 300, 300);
+    View6.tag = 6;
+    if (shapevalue != 0)
+    {
+        [View6 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+    }
+    else {
+        [View6 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateNormal)];
+    }
+    [self.view addSubview:View6];
+    [View6 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchUpInside];
+}
+
+
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
     
@@ -92,7 +184,6 @@
 		case NSStreamEventOpenCompleted:
             isConnected = YES;
             NSLog(@"Connection established");
-       //     [self sendMessage: [NSString stringWithFormat: @"1"]];
             break;
     
 		case NSStreamEventHasBytesAvailable:
@@ -139,74 +230,29 @@
     isConnected = NO;
 }
 
-- (void) xyPosition {
-    switch (shapePosition) {
-        case 1:
-            midpoint.x = self.view.bounds.size.height/4 - 100;
-            midpoint.y = self.view.bounds.origin.y;
-        //    midpoint.x = 400;
-         //   midpoint.y = 300;
-            break;
-            
-            
-            //           midpoint.x = self.view.bounds.size.height/8;
- //           midpoint.y = self.view.bounds.origin.y + (self.view.bounds.size.width/4);
-  //          break;
-        case 2:
-           // midpoint.x = 500;
-           // midpoint.y = 300;
-            
-            midpoint.x = self.view.bounds.size.height/2 - 50;
-            midpoint.y = self.view.bounds.origin.y;
-           break;
-        case 3:
-         //   midpoint.x = 600;
-         //   midpoint.y = 300;
-            midpoint.x = self.view.bounds.size.height;
-            midpoint.y = self.view.bounds.origin.y;
-       
-            break;
- //       case 4:
- //           midpoint.x = self.view.bounds.size.height/8;
- //           midpoint.y = self.view.bounds.origin.y + ((self.view.bounds.size.width*3)/4);
- //           break;
- //       case 5:
- //           midpoint.x = self.view.bounds.size.height/4;
- //           midpoint.y = self.view.bounds.origin.y + ((self.view.bounds.size.width*3)/4);
- //           break;
- //       case 6:
- //           midpoint.x = (self.view.bounds.size.height*6)/8;
- //           midpoint.y = self.view.bounds.origin.y + ((self.view.bounds.size.width*3)/4);
- //           break;
-   }
-}
 
-- (void) shape{
+
+- (UIImage *) shape: (int) shapeImage{
     switch (shapeImage) {
         case 1:
-            stimulus = [UIImage imageNamed:@"8.bmp"];
+            stimulus = [UIImage imageNamed:@"1.bmp"];
             break;
-       // case 2:
-       //     stimulus = [UIImage imageNamed:@"2.bmp"];
-       //     break;
-       // case 3:
-       //     stimulus = [UIImage imageNamed:@"3.bmp"];
-       //     break;
-       // case 4:
-       //     stimulus = [UIImage imageNamed:@"4.bmp"];
-       //     break;
+        case 2:
+            stimulus = [UIImage imageNamed:@"2.bmp"];
+            break;
+        case 3:
+            stimulus = [UIImage imageNamed:@"3.bmp"];
+            break;
+        case 4:
+            stimulus = [UIImage imageNamed:@"4.bmp"];
+            break;
     }
+    return stimulus;
 }
 
-
-
-
-
 - (IBAction) onPressButton: (id) sender{ 
-//    NSString *deviceId = [[UIDevice currentDevice] name]; 
-    //   [self sendMessage: [NSString stringWithFormat: @"%@|%i", deviceId, shapeImage]];
-    [self sendMessage: [NSString stringWithFormat: @"%i", shapePosition]];
-//        NSLog(@"%@|%i", deviceId, shapeImage);
+    [self sendMessage: [NSString stringWithFormat: @"%i", [sender tag]]];
+
 }
 
 
