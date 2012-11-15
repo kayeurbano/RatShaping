@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class RatPressButtonViewController;
 @interface RatPressButtonAppDelegate : UIResponder <UIApplicationDelegate>
 
+
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) RatPressButtonViewController* viewController;
 
 @end

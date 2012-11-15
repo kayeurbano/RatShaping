@@ -5,10 +5,10 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
+			<key>Title</key>
+			<string>Group</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
-			<key>Title</key>
-			<string>Host IP Address</string>
 		</dict>
 		<dict>
 			<key>AutocapitalizationType</key>
@@ -20,13 +20,25 @@
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
-			<string>server_address</string>
+			<string>IP_Address</string>
 			<key>KeyboardType</key>
 			<string>NumbersAndPunctuation</string>
 			<key>Title</key>
-			<string>IPAddress</string>
+			<string>IP Address</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>TCP/IP Port Number</string>
+			<key>Key</key>
+			<string>Port_Number</string>
+			<key>DefaultValue</key>
+			<integer>12345</integer>
+			<key>KeyboardType</key>
+			<string>NumberPad</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

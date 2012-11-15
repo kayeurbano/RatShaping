@@ -7,14 +7,21 @@
 //
 
 #import "RatPressButtonAppDelegate.h"
+#import "RatPressButtonViewController.h"
 
 @implementation RatPressButtonAppDelegate
 
-@synthesize window = _window;
+@synthesize viewController;
+@synthesize window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.viewController = [[RatPressButtonViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 							
