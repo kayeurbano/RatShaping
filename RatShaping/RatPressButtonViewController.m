@@ -10,19 +10,21 @@
 
 
 
+
+@interface RatPressButtonViewController()
+@end
+
 @implementation RatPressButtonViewController
 
 @synthesize UserDefinedHostIP;
 @synthesize UserDefinedPortNumber;
-@synthesize toggleDimming;
 
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeLeft);
 }
 
-- (void)viewWillAppear:(BOOL)animated { 
+-(void)viewWillAppear:(BOOL)animated { 
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone]; 
     self.view.backgroundColor = [UIColor blackColor];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showInstructions)];
@@ -46,13 +48,6 @@
     [Settings setObject:UserDefinedHostIP.text forKey:@"IP_Address"];
     int portnumber = [UserDefinedPortNumber.text intValue];
     [Settings setInteger:portnumber forKey:@"Port_Number"]; 
-    if (self.toggleDimming.on){
-        switchValue = @"YES";
-    }
-    else {
-        switchValue = @"NO";
-    }
-    [Settings setObject:switchValue forKey:@"Toggle_Dimming"];
     [Settings synchronize];
 }
 
@@ -130,137 +125,101 @@
 }
     
 - (void) SquareOne: (int) shapevalue{
-    UIButton *View1 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-     View1.showsTouchWhenHighlighted = NO;
+    UIButton *View1 = [UIButton buttonWithType:UIButtonTypeCustom]; 
     View1.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, 300, 300);
     View1.tag = 1;
     if (shapevalue != 0)
     {
         
-        if (switchValue == @"YES"){
-        [View1 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateHighlighted)];
-        }
-            else{
-                [View1 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
-            }
+        [View1 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+
     }
     else {
-        [View1 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateDisabled)];
+        View1.backgroundColor = [UIColor blackColor];
     }
     [self.view addSubview:View1];
     NSLog(@"Image 1 picture: %@", View1.currentBackgroundImage);
-    [View1 addTarget:self action:@selector(onPressButton: ) forControlEvents:UIControlEventTouchUpInside];
+    [View1 addTarget:self action:@selector(onPressButton: ) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) SquareTwo: (int) shapevalue{
-    UIButton *View2 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-    
+    UIButton *View2 = [UIButton buttonWithType:UIButtonTypeCustom]; 
     View2.frame = CGRectMake(self.view.bounds.size.height/2 - 25, self.view.bounds.origin.y, 300, 300);
     View2.tag = 2;
     if (shapevalue != 0)
     {
         
-        if (switchValue == @"YES"){
-            [View2 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateHighlighted)];
-        }
-        else{
-            [View2 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
-        }
+        [View2 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+        
     }
     else {
-        [View2 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateDisabled)];
+        View2.backgroundColor = [UIColor blackColor];
         
     }
     [self.view addSubview:View2];
     NSLog(@"Image 2 picture: %@", View2.currentBackgroundImage);
-    [View2 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchUpInside];
-    View2.showsTouchWhenHighlighted = NO;
+    [View2 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) SquareThree: (int) shapevalue{
-    UIButton *View3 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-     View3.showsTouchWhenHighlighted = NO;
+    UIButton *View3 = [UIButton buttonWithType:UIButtonTypeCustom]; 
     View3.frame = CGRectMake(self.view.bounds.size.height - 40, self.view.bounds.origin.y, 300, 300);
     View3.tag = 3;
     if (shapevalue != 0)
     {
-        
-        if (switchValue == @"YES"){
-            [View3 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateHighlighted)];
+        [View3 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
         }
-        else{
-            [View3 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
-        }    }
     else {
-        [View3 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateDisabled)];
+        View3.backgroundColor = [UIColor blackColor];
     }
     [self.view addSubview:View3];
     NSLog(@"Image 3 picture: %@", View3.currentBackgroundImage);
-    [View3 addTarget:self action:@selector(onPressButton:)  forControlEvents:UIControlEventTouchUpInside];
+    [View3 addTarget:self action:@selector(onPressButton:)  forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) SquareFour: (int) shapevalue{
-    UIButton *View4 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-     View4.showsTouchWhenHighlighted = NO;
+    UIButton *View4 = [UIButton buttonWithType:UIButtonTypeCustom]; 
     View4.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.size.width/2 - 50, 300, 300);
     View4.tag = 4;
     if (shapevalue != 0)
     {
-        
-    if (switchValue == @"YES"){
-        [View4 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateHighlighted)];
-    }
-    else{
-        [View4 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
-    }
+       [View4 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
     }
     else {
-        [View4 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateDisabled)];
+        View4.backgroundColor = [UIColor blackColor];
     }
     [self.view addSubview:View4];
-    [View4 addTarget:self action:@selector(onPressButton:)  forControlEvents:UIControlEventTouchUpInside];
+    [View4 addTarget:self action:@selector(onPressButton:)  forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) SquareFive: (int) shapevalue{
-    UIButton *View5 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-     View5.showsTouchWhenHighlighted = NO;
+    UIButton *View5 = [UIButton buttonWithType:UIButtonTypeCustom]; 
     View5.frame = CGRectMake(self.view.bounds.size.height/2-25, self.view.bounds.size.width/2 - 50, 300, 300);
     View5.tag = 5;
     if (shapevalue != 0)
     {
-        
-        if (switchValue == @"YES"){
-            [View5 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateHighlighted)];
-        }
-        else{
-            [View5 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
-        }    }
+      [View5 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+    }
     else {
-        [View5 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateDisabled)];
+        View5.backgroundColor = [UIColor blackColor];
     }
     [self.view addSubview:View5];
-    [View5 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchUpInside];
+    [View5 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchDown];
 }
 
 - (void) SquareSix: (int) shapevalue{
-    UIButton *View6 = [UIButton buttonWithType:UIButtonTypeRoundedRect]; 
-     View6.showsTouchWhenHighlighted = NO;
+    UIButton *View6 = [UIButton buttonWithType:UIButtonTypeCustom]; 
     View6.frame = CGRectMake(self.view.bounds.size.height-40, self.view.bounds.size.width/2 - 50, 300, 300);
     View6.tag = 6;
     if (shapevalue != 0)
     {
-        
-        if (switchValue == @"YES"){
-            [View6 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateHighlighted)];
-        }
-        else{
-            [View6 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
-        }    }
+      [View6 setBackgroundImage:[self shape: shapevalue] forState:(UIControlStateNormal)];
+    }
     else {
-        [View6 setBackgroundImage:[UIImage imageNamed:@"black.bmp"] forState:(UIControlStateDisabled)];
+        View6.backgroundColor = [UIColor blackColor];
     }
     [self.view addSubview:View6];
-    [View6 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchUpInside];
+    [View6 addTarget:self action:@selector(onPressButton: )  forControlEvents:UIControlEventTouchDown];
 }
 
 
@@ -300,12 +259,20 @@
 			isConnected = NO;
             [outputStream close];
             [inputStream close];
+            for (UIButton *btn in self.view.subviews){
+                [btn removeFromSuperview];
+            }
+            
 			break;
             
 		case NSStreamEventEndEncountered:
             isConnected = NO;
             [outputStream close];
             [inputStream close];
+            [self viewWillDisappear:YES];
+            for (UIButton *btn in self.view.subviews){
+                [btn removeFromSuperview];
+            }   
 			break;
             
 	}
@@ -323,25 +290,25 @@
 - (UIImage *) shape: (int) shapeImage{
     switch (shapeImage) {
         case 1:
-            stimulus = [UIImage imageNamed:@"Vertical2.bmp"];
+            stimulus = [UIImage imageNamed:@"1.bmp"];
             break;
         case 2:
-            stimulus = [UIImage imageNamed:@"Horizontal2.bmp"];
+            stimulus = [UIImage imageNamed:@"2.bmp"];
             break;
         case 3:
-            stimulus = [UIImage imageNamed:@"Star3.bmp"];
+            stimulus = [UIImage imageNamed:@"3.bmp"];
             break;
         case 4:
-            stimulus = [UIImage imageNamed:@"Clouds.bmp"];
+            stimulus = [UIImage imageNamed:@"4.bmp"];
             break;
         case 5:
-            stimulus = [UIImage imageNamed:@"Light.bmp"];
+            stimulus = [UIImage imageNamed:@"5.bmp"];
             break;
         case 6:
-            stimulus = [UIImage imageNamed:@"Dark.bmp"];
+            stimulus = [UIImage imageNamed:@"5.bmp"];
             break;
         case 7:
-            stimulus = [UIImage imageNamed:@"8.bmp"];
+            stimulus = [UIImage imageNamed:@"7.bmp"];
             break;
     }
     return stimulus;
@@ -357,8 +324,12 @@
 -(void) viewDidDisappear:(BOOL)animated{
         [self closeConnection];
     NSLog(@"Connection closed");
+    for (UIButton *btn in self.view.subviews){
+        [btn removeFromSuperview];
+    }  
 }
 
 
 @end
 
+     

@@ -28,13 +28,11 @@
     IBOutlet UINavigationController* MenuNavigation;
     IBOutlet UITextField *UserDefinedPortNumber;
     IBOutlet UITextField *UserDefinedHostIP;
-    IBOutlet UISwitch *toggleDimming;
-    NSString *switchValue;
+
 }
 
 @property (strong, nonatomic) IBOutlet UITextField *UserDefinedPortNumber;
 @property (strong, nonatomic) IBOutlet UITextField *UserDefinedHostIP;
-@property (strong, nonatomic) IBOutlet UISwitch *toggleDimming;
 
 
 -(void)didTap;
