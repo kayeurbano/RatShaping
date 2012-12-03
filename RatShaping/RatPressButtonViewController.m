@@ -305,7 +305,7 @@
             stimulus = [UIImage imageNamed:@"5.bmp"];
             break;
         case 6:
-            stimulus = [UIImage imageNamed:@"5.bmp"];
+            stimulus = [UIImage imageNamed:@"6.bmp"];
             break;
         case 7:
             stimulus = [UIImage imageNamed:@"7.bmp"];
