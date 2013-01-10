@@ -79,20 +79,20 @@
     NSLog(@"Connection opened. Host IP Address %@", IP_Address);
     NSLog(@"Port number %u", Port_Number);
     
-    [self performSelector:@selector(showAlert) withObject:nil afterDelay:10];    
+//    [self performSelector:@selector(showAlert) withObject:nil afterDelay:10];    
 }
 
--(void)showAlert{
-    if (isConnected == NO){
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Unable to establish a connection using IP address and/or port number." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];
-    [inputStream close];
-    [outputStream close];
-    }
-    else {
-        return;
-    }
-}
+//-(void)showAlert{
+//    if (isConnected == NO){
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Error" message:@"Unable to establish a connection using IP address and/or port number." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    [alert show];
+//    [inputStream close];
+//    [outputStream close];
+//    }
+//    else {
+//        return;
+//    }
+//}
 
 -(void) sendMessage: (NSString*) message{
     if(isConnected == NO){
@@ -257,22 +257,27 @@
             
 		case NSStreamEventErrorOccurred:
 			isConnected = NO;
-            [outputStream close];
-            [inputStream close];
-            for (UIButton *btn in self.view.subviews){
-                [btn removeFromSuperview];
-            }
-            
+//            [outputStream close];
+//            [inputStream close];
+//            for (UIButton *btn in self.view.subviews){
+//                [btn removeFromSuperview];
+//            }
+            //For Leising Lab:
+            [self openConnection];
+            [self sendMessage: [NSString stringWithFormat: @"9"]];            
 			break;
             
 		case NSStreamEventEndEncountered:
             isConnected = NO;
-            [outputStream close];
-            [inputStream close];
-            [self viewWillDisappear:YES];
-            for (UIButton *btn in self.view.subviews){
-                [btn removeFromSuperview];
-            }   
+//            [outputStream close];
+//            [inputStream close];
+//            [self viewWillDisappear:YES];
+//            for (UIButton *btn in self.view.subviews){
+//                [btn removeFromSuperview];
+//            }   
+             //For Leising Lab:
+             [self openConnection];
+             [self sendMessage: [NSString stringWithFormat: @"9"]];
 			break;
             
 	}
